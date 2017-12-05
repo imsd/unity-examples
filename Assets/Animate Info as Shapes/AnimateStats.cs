@@ -18,7 +18,6 @@ public class AnimateStats : MonoBehaviour {
 	public Vector3 TargetValue3;
 
 	// keep track of time
-	private float StartTime;
 	public float AnimationLength = 3f;
 
 	// text object
@@ -27,9 +26,6 @@ public class AnimateStats : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		// start the timer
-		StartTime = 0f;
-		
 		// as an alternative to assigning in the inspector,
 		// assign by finding names of game objects
 		Shape1 = GameObject.Find ("Shape (1)").transform;
@@ -48,11 +44,8 @@ public class AnimateStats : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		// how much time has passed since the start of the animation
-		float TimePassed = (Time.time - StartTime);
-
 		// what total is that as a proportion?
-		float Proportion = TimePassed / AnimationLength;
+		float Proportion = Time.time / AnimationLength;
 
 		// animate using "Lerp" function which moves between two values smoothly
 		Shape1.transform.localScale = Vector3.Lerp (startingValue, TargetValue1, Proportion);
